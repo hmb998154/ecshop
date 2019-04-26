@@ -121,33 +121,7 @@ class Meet extends Service
 	 * @return [type] [description]
 	 */
 	public function test($input){
-		return "test";exit;
-		$mobile="1858728585";
-		$username = 'hnb';
-		$area='ddds';
-		// $method="post";
-		$post_data = array(
-			'appid'    =>'30350',
-			'to'       =>'18350033658',
-			'content'  =>'【鸣世天下珠宝】来自'."$area".',手机号为:'."$mobile".'的'."$username".'(先生/女士)提交了预约珠宝预约上门服务，请及时回复。',
-			'signature'=> 'a7de29ff8d69ac6f6b451be7ac2cd658',
-		);
-		$data = $this->formatParam($post_data);
-		$url = 'https://api.mysubmail.com/message/send.json';
-		$curl = curl_init($url);
-		curl_setopt($curl, CURLOPT_HEADER, 0);
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
-		curl_setopt($curl, CURLOPT_POST, 1);                            //post方式提交 
-		curl_setopt($curl, CURLOPT_POSTFIELDS, $data);//要提交的信息
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-		curl_setopt($curl, CURLOPT_HEADER, FALSE);
-		$res = curl_exec($curl);
-		curl_close($curl);
-	    // print_r($information);exit;
-	    var_dump($res);
-
+		return "test";
 	}
 
 
