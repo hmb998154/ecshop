@@ -1,32 +1,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>{$lang.cp_home}{if $ur_here} - {$ur_here}{/if}</title>
+<title><?php echo $this->_var['lang']['cp_home']; ?><?php if ($this->_var['ur_here']): ?> - <?php echo $this->_var['ur_here']; ?><?php endif; ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <link href="styles/general.css" rel="stylesheet" type="text/css" />
 <link href="styles/main.css" rel="stylesheet" type="text/css" />
-{literal}
+
 <style type="text/css">
 body,html {
   height: 100%;
   overflow: hidden;
 }
 </style>
-{/literal}
-{insert_scripts files="../js/utils.js,validator.js,../js/transport.js"}
+
+<?php echo $this->smarty_insert_scripts(array('files'=>'../js/utils.js,validator.js,../js/transport.js')); ?>
 <script language="JavaScript">
 <!--
 // 这里把JS用到的所有语言都赋值到这里
-{foreach from=$lang.js_languages key=key item=item}
-var {$key} = "{$item}";
-{/foreach}
-{literal}
+<?php $_from = $this->_var['lang']['js_languages']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['item']):
+?>
+var <?php echo $this->_var['key']; ?> = "<?php echo $this->_var['item']; ?>";
+<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+
 if (window.parent != window) {
   window.top.location.href = location.href;
 }
-{/literal}
+
 //-->
 </script>
 </head>
@@ -41,10 +43,10 @@ if (window.parent != window) {
         <!-- <img src="images/ecshop-logo.png" width="373" height="103" border="0" alt="ECSHOP" /> -->
       </div>
     </div>
-    <div class="message">{$login_err}</div>
+    <div class="message"><?php echo $this->_var['login_err']; ?></div>
     <div class="z-bd">
       <div class="login-panel" id="loginPanel">
-       <h3 class="panel-hd cl-link-blue">{$lang.ecshop_login}</h3>
+       <h3 class="panel-hd cl-link-blue"><?php echo $this->_var['lang']['ecshop_login']; ?></h3>
         <div class="controls first">
           <svg class="iconphone" width="20px" height="20px" viewBox="0 0 20 20">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
@@ -53,7 +55,7 @@ if (window.parent != window) {
               </g>
             </g>
           </svg>
-          <input type="text" name="username" placeholder="{$lang.label_username}" />
+          <input type="text" name="username" placeholder="<?php echo $this->_var['lang']['label_username']; ?>" />
         </div>
         <div class="controls two">
           <svg class="iconphone" width="20px" height="20px" viewBox="0 0 20 20">
@@ -63,9 +65,9 @@ if (window.parent != window) {
               </g>
             </g>
           </svg>
-          <input type="password" name="password" placeholder="{$lang.label_password}"/>
+          <input type="password" name="password" placeholder="<?php echo $this->_var['lang']['label_password']; ?>"/>
         </div>
-        {if $gd_version > 0}
+        <?php if ($this->_var['gd_version'] > 0): ?>
           <div class="controls third">
             <svg class="iconphone" width="20px" height="20px" viewBox="0 0 20 20">
               <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
@@ -74,22 +76,22 @@ if (window.parent != window) {
                 </g>
               </g>
             </svg>
-            <input type="text" name="no-captcha" class="capital" placeholder="{$lang.label_captcha}" />
+            <input type="text" name="no-captcha" class="capital" placeholder="<?php echo $this->_var['lang']['label_captcha']; ?>" />
             <!--<input name="captchas" type="text" data-error-msg="验证码不能为空" class="Inp-v" placeholder="输入验证码"><i class="Ico"></i>-->
             <div class="" style="position: absolute; right: 8px; top: 8px;" id="number_div">
-              <img src="index.php?act=captcha&{$random}" width="102" height="34" alt="CAPTCHA" border="1" onclick= this.src="index.php?act=captcha&"+Math.random() style="cursor: pointer;" title="{$lang.click_for_another}" />
+              <img src="index.php?act=captcha&<?php echo $this->_var['random']; ?>" width="102" height="34" alt="CAPTCHA" border="1" onclick= this.src="index.php?act=captcha&"+Math.random() style="cursor: pointer;" title="<?php echo $this->_var['lang']['click_for_another']; ?>" />
             </div>
           </div>
-        {/if}
+        <?php endif; ?>
         <div class="controls last">
-          <input type="submit" class="btn-a" value="{$lang.signin_now}" class="button" />
+          <input type="submit" class="btn-a" value="<?php echo $this->_var['lang']['signin_now']; ?>" class="button" />
           <span style="display: none" id="login_error_msg"></span>
         </div>
         <div class="controls bside" style="border: none">
           <input type="checkbox" value="1" name="remember" id="remember" />
-          <label for="remember">{$lang.remember}</label></td>
-          <a class="link-forget cl-link-blue" href="get_password.php?act=forget_pwd">{$lang.forget_pwd}</a>
-          <a class="link-home cl-link-blue" href="../">{$lang.back_home}</a>
+          <label for="remember"><?php echo $this->_var['lang']['remember']; ?></label></td>
+          <a class="link-forget cl-link-blue" href="get_password.php?act=forget_pwd"><?php echo $this->_var['lang']['forget_pwd']; ?></a>
+          <a class="link-home cl-link-blue" href="../"><?php echo $this->_var['lang']['back_home']; ?></a>
         </div>
       </div>
     </div>
@@ -118,7 +120,7 @@ if (window.parent != window) {
 
 <!--
   document.forms['theForm'].elements['username'].focus();
-  {literal}
+  
   /**
    * 检查表单输入的内容
    */
@@ -133,10 +135,10 @@ if (window.parent != window) {
     }
     return validator.passed();
   }
-  {/literal}
+  
 
 
-  var dom ="<h3 class='panel-hd cl-orange'>{$lang.yunqi_login}</h3><div class='main'><span class='error-hint' {if !$error_msg } style='display:none' {/if} id='login_error_msg'>{$error_msg}</span><iframe id='loginFrame' src='{$iframe_url}' height='220' frameborder='0' scrolling='no'></iframe><div class='cloud-passw'><a target='_blank' href='https://account.shopex.cn/forget?' style='float:left;'>{$lang.forget_pwd}</a> <a href='javascript:void(0)' style='float:right;' onclick='loginTab()'>{$lang.back_local_login}&gt;&gt;</a> </div> </div>";
+  var dom ="<h3 class='panel-hd cl-orange'><?php echo $this->_var['lang']['yunqi_login']; ?></h3><div class='main'><span class='error-hint' <?php if (! $this->_var['error_msg']): ?> style='display:none' <?php endif; ?> id='login_error_msg'><?php echo $this->_var['error_msg']; ?></span><iframe id='loginFrame' src='<?php echo $this->_var['iframe_url']; ?>' height='220' frameborder='0' scrolling='no'></iframe><div class='cloud-passw'><a target='_blank' href='https://account.shopex.cn/forget?' style='float:left;'><?php echo $this->_var['lang']['forget_pwd']; ?></a> <a href='javascript:void(0)' style='float:right;' onclick='loginTab()'><?php echo $this->_var['lang']['back_local_login']; ?>&gt;&gt;</a> </div> </div>";
   var cloudLogin = document.getElementById('cloudLogin');
   var elsePanel = document.getElementById('elseLogin');
   var loginPanel = document.getElementById('loginPanel');
@@ -151,7 +153,7 @@ if (window.parent != window) {
       loginPanel.classList.add('cloud');
       elsePanel.classList.add('ecshop');
       loginPanel.innerHTML= dom;
-      elsePanel.getElementsByTagName('p')[0].innerHTML = '{$lang.ecshop_account}';
+      elsePanel.getElementsByTagName('p')[0].innerHTML = '<?php echo $this->_var['lang']['ecshop_account']; ?>';
     }else{
       loginPanel.classList.remove('cloud');
       elsePanel.classList.remove('ecshop');

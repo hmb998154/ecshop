@@ -1324,7 +1324,7 @@ em, cite, th {
   overflow: hidden;
   padding-bottom: 42px;
   height: 350px;
-  background: url(../images/icloud-bar.png) no-repeat 0 bottom;
+  /*background: url(../images/icloud-bar.png) no-repeat 0 bottom;*/
   margin-top: 50px;
 }
 .z-bd .login-panel {
